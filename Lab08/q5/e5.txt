@@ -1,0 +1,35 @@
+4
+Helena 10000 7
+Jason 20000 21
+Kit 30000 21
+LazyGuy 15000 7
+
+list
+changeAnnualLeaves Helena 14
+exchangeSalaries Helena LazyGuy
+addSalary Helena 5000
+list
+
+undo
+undo
+undo
+list
+
+redo
+redo
+redo
+list
+
+fire LazyGuy
+fire Helena
+
+list
+
+undo
+list
+
+undo
+list
+
+redo
+list
