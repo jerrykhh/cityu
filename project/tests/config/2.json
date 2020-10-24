@@ -1,0 +1,9 @@
+{
+    "binary": 1,
+    "filename": 2,
+    "filesize": [10, 20, 30, 10, 20, 30, 10, 20, 30, 10, 20, 30],
+    "timeout": 2,
+    "seed": 10000079,
+    "description": "multiple files test, twelve small files of ${filesize} (${timeout} sec timeout)",
+    "preparation": "cat ${filename} > /dev/null"
+}

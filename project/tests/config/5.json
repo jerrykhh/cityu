@@ -1,0 +1,9 @@
+{
+    "binary": 1,
+    "filename": 5,
+    "filesize": [100],
+    "timeout": 2,
+    "seed": 10000139,
+    "description": "single large file test, a large file of ${filesize} (${timeout} sec timeout)",
+    "preparation": "cat ${filename} > /dev/null"
+}

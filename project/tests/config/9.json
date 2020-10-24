@@ -1,0 +1,9 @@
+{
+    "binary": 1,
+    "filename": 9,
+    "filesize": [[100, 200, 100, 200, 100, 200], 30, 40, 30, 40, 30, 40],
+    "timeout": 2,
+    "seed": 10000223,
+    "description": "mixed test 2, a directory that contains six large files of ${directory}, and six small files outside directory of ${filesize} (${timeout} sec timeout)",
+    "preparation": "cat ${filename} > /dev/null"
+}
