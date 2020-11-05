@@ -1,0 +1,39 @@
+startNewDay|20-Feb-2020
+
+hire|Angel
+hire|Brian
+hire|Dickson
+hire|Emily
+hire|Ada
+hire|Bill
+hire|Helen
+
+listEmployees
+
+setupTeam|X Troop|Angel 
+setupTeam|Spider Gang|Brian
+
+joinTeam|Dickson|X Troop
+joinTeam|Emily|Spider Gang
+joinTeam|Ada|Spider Gang
+
+listTeams
+
+listEmployees
+
+undo
+listTeams
+
+undo
+listTeams
+
+redo
+redo
+listTeams
+
+undo
+listTeams
+joinTeam|Ada|X Troop
+
+redo
+listTeams

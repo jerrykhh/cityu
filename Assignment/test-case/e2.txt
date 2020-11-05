@@ -1,0 +1,61 @@
+startNewDay|20-Feb-2020
+
+hire|Angel
+hire|Brian
+hire|Carol
+hire|Dickson
+hire|Ada
+hire|Bill
+hire|Helen
+
+listEmployees
+
+setupTeam|X Troop|Angel 
+setupTeam|Spider Gang|Brian
+setupTeam|Team 007|Bill
+
+joinTeam|Dickson|X Troop
+joinTeam|Carol|Spider Gang
+joinTeam|Ada|Spider Gang
+
+changeTeam|Carol|X Troop
+listTeams
+listEmployees
+
+changeTeam|Carol|Spider Gang
+listTeams
+listEmployees
+
+undo
+listTeams
+listEmployees
+
+undo
+undo
+undo
+undo
+undo
+undo
+undo
+listTeams
+
+redo
+redo
+redo
+redo
+redo
+redo
+redo
+redo
+listTeams
+
+undo
+listTeams
+
+changeTeam|Dickson|Spider Gang
+changeTeam|Carol|Team 007
+
+redo
+listTeams
+listEmployees
+
