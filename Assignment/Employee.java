@@ -8,7 +8,6 @@ public class Employee implements Comparable<Employee>{
 
     public static Employee searchEmployee(ArrayList<Employee> list, String nameToSearch) throws ExEmployeeNotFound {
         for (Employee employee : list) {
-            System.out.println(employee.getName());
             if(employee.getName().equals(nameToSearch))
                 return employee;
         }

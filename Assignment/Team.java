@@ -8,19 +8,10 @@ public class Team implements Comparable<Team> {
     private Day dateSetup;
 
     public Team(String teamName, Employee headEmployee) {
-        init(teamName, headEmployee);
-        dateSetup = SystemDate.getInstance().clone();
-    }
-
-    public Team(String teamName, Employee headEmployee, Day dateSetup){
-        init(teamName, headEmployee);
-        this.dateSetup = dateSetup;
-    }
-
-    private void init(String teamName, Employee headEmployee){
         this.teamName = teamName;
         head = headEmployee;
         memberList = new ArrayList<Employee>();
+        dateSetup = SystemDate.getInstance().clone();
     }
 
     public void addEmployee(Employee employee){
@@ -94,9 +85,9 @@ public class Team implements Comparable<Team> {
         throw new ExTeamNotExist();
     }
 
-
     @Override
     public int compareTo(Team another) {
         return this.teamName.compareTo(another.teamName);
     }
+
 }

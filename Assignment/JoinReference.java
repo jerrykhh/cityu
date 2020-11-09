@@ -27,8 +27,10 @@ public class JoinReference {
 
     public static boolean searchJoinedTeam(ArrayList<JoinReference> joinReferenceList, String searchEmplyeeName){
         for (JoinReference jReference : joinReferenceList) {
-            if(jReference.getEmployee().getName().equals(searchEmplyeeName))
-                return true;
+            for(Employee employee: jReference.getTeam().getMemberList()){
+                if(employee.getName().equals(searchEmplyeeName))
+                    return true;
+            }
         }
         return false;
     }

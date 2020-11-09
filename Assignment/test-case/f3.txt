@@ -1,0 +1,63 @@
+startNewDay|20-Feb-2020
+
+hire|Angel
+hire|Brian
+hire|Carol
+
+hire|Dickson
+hire|Emily
+hire|Ada
+hire|Bill
+hire|Helen
+
+setupTeam|X Troop|Angel 
+setupTeam|Spider Gang|Brian
+setupTeam|Team 007|Carol
+joinTeam|Dickson|X Troop
+joinTeam|Ada|Spider Gang
+joinTeam|Emily|Spider Gang
+joinTeam|Bill|Team 007
+
+listEmployees
+listTeams
+
+createProject|P001|7
+createProject|P002|10
+createProject|P003|10
+takeProject|Spider Gang|P001|28-Feb-2020
+listProjects
+
+takeProject|X Troop|P002|21-Feb-2020
+changeTeam|Dickson|Spider Gang
+takeProject|X Troop|P003|28-Feb-2020
+listProjects
+
+createProject|P004|2
+createProject|P005|2
+createProject|P006|2
+createProject|P007|5
+listProjects
+
+listEmployees
+listTeams
+
+startNewDay|24-Feb-2020
+takeProject|Team 007|P004|24-Feb-2020
+takeProject|Team 700|P004|25-Feb-2020
+takeProject|Team 007|P400|25-Feb-2020
+takeProject|Team 007|P004
+takeProject|Team 007|P004|25-Feb-2020
+takeProject|Team 007|P004|25-Apr-2020
+takeProject|Team 007|P001|25-May-2020
+listProjects
+
+takeProject|X Troop|P005|27-Feb-2020
+takeProject|X Troop|P005|26-Feb-2020
+
+takeProject|X Troop|P006|8-Mar-2020
+takeProject|X Troop|P006|10-Mar-2020
+
+takeProject|Spider Gang|P007|27-Feb-2020
+takeProject|Spider Gang|P007|26-Feb-2020
+
+listProjects

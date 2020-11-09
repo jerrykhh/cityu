@@ -14,6 +14,7 @@ public class CmdChangeTeam extends RecordedCommand{
         preJoinReference = company.searchJoinReference(cmdParts[1]);
         newJoinReference = company.changeTeam(cmdParts[1], cmdParts[2]);
         pushUndo(this);
+	System.out.println("Done.");
         
     }
 

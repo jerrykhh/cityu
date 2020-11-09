@@ -3,7 +3,7 @@ import java.util.*;
 import java.io.FileNotFoundException;
 
 public class Main {
-    public static void main(String[] args) throws FileNotFoundException{
+    public static void main(String[] args) throws FileNotFoundException,  ExInvaildDate{
 
         Scanner input = new Scanner(System.in);
         System.out.print("Please input the file pathname: ");
@@ -36,6 +36,8 @@ public class Main {
                     (new CmdCreateProject()).execute(cmdParts);
                 } else if (cmdParts[0].equals("takeProject")) {
                     (new CmdTakeProject()).execute(cmdParts);
+                } else if(cmdParts[0].equals("suggestTeam")){
+                    (new CmdSuggestTeam()).execute(cmdParts);
                 } else if (cmdParts[0].equals("changeTeam")){
                     (new CmdChangeTeam()).execute(cmdParts);
                 } else if (cmdParts[0].equals("setupTeam")) {
@@ -44,7 +46,11 @@ public class Main {
                     (new CmdJoinTeam()).execute(cmdParts);
                 } else if (cmdParts[0].equals("startNewDay")) {
                     (new CmdStartNewDay()).execute(cmdParts);
-                } else if (cmdParts[0].equals("undo")) {
+                } else if (cmdParts[0].equals("showEmployeeDetails")){
+                    (new CmdShowEmployeeDetails()).execute(cmdParts);
+                } else if(cmdParts[0].equals("showProjectWorkerDetails")){
+                    (new CmdShowProjectWorkerDetails()).execute(cmdParts);
+                }else if (cmdParts[0].equals("undo")) {
                     RecordedCommand.undoCommand();
                 } else if (cmdParts[0].equals("redo")) {
                     RecordedCommand.reddoCommand();
@@ -52,7 +58,7 @@ public class Main {
                     throw new ExWrongCommand();
                 }
             } catch (Exception e) {
-                System.out.println(e);
+                System.out.println(e.getMessage());
             }
 
         }

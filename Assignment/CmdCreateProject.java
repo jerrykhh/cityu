@@ -15,12 +15,12 @@ public class CmdCreateProject extends RecordedCommand {
             pushUndo(this);
             System.out.println("Done.");
         }catch(ExProjectAlready e){
-            System.out.println(e);
+            System.out.println(e.getMessage());
         }catch(NumberFormatException e){
             System.out.println("Wrong number format -- Please enter an integer.");
         }catch (ExProjectEstimatedPowerFormat e) {
             System.out.println("Estimated manpower should not be zero or negative.");
-            System.out.println(e);
+            System.out.println(e.getMessage());
         }
     }
 

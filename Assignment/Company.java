@@ -7,6 +7,7 @@ public class Company {
     private ArrayList<Team> allTeams;
     private ArrayList<Project> allProjects;
     private ArrayList<JoinReference> allJoinReferences;
+    private static ArrayList<EmployeeJoinTeamLogging> allLogging = new ArrayList<EmployeeJoinTeamLogging>();
 
     private static Company instance = new Company();
 
@@ -19,6 +20,14 @@ public class Company {
 
     public static Company getInstance() {
         return instance;
+    }
+
+    public static void changeEmplyeeJoinTeamLogging(Team team, Employee employee) {
+        for (EmployeeJoinTeamLogging logging : allLogging) {
+            if (logging.getTeam() == team && logging.getEmployee() == employee) {
+                logging.setChangeDay(new Day(SystemDate.getInstance()));
+            }
+        }
     }
 
     public Employee createEmployee(String name) throws ExEmployeeNameAlready {
@@ -47,6 +56,10 @@ public class Company {
         allEmployees.forEach(employee -> System.out.println(employee + getTeamName(employee)));
     }
 
+    public void showEmployeeDetails(String employeeName) {
+        EmployeeJoinTeamLogging.EmployeeLogging(allLogging, employeeName);
+    }
+
     private String getTeamName(Employee employee) {
         for (Team team : allTeams) {
             if (team.findEmployee(employee)) {
@@ -72,6 +85,7 @@ public class Company {
         if (Team.searchTeamName(allTeams, teamName))
             throw new ExTeamNameAlready();
         Team team = new Team(teamName, employee);
+        allLogging.add(new EmployeeJoinTeamLogging(team, employee));
         allTeams.add(team);
         Collections.sort(allTeams);
         return team;
@@ -89,20 +103,19 @@ public class Company {
 
     public JoinReference joinTeam(String employeeName, String teamName)
             throws ExEmployeeNotFound, ExEmployeeJoinedTeam, ExTeamNotExist {
+        if (!Team.searchTeamName(allTeams, teamName))
+            throw new ExTeamNotExist();
         for (Team team : allTeams) {
             if (team.getTeamName().equals(teamName)) {
-            
+
                 if (JoinReference.searchJoinedTeam(allJoinReferences, employeeName))
                     throw new ExEmployeeJoinedTeam();
-                
-                Employee employee = Employee.searchEmployee(allEmployees, employeeName);
 
-                if (!Team.searchTeamName(allTeams, teamName))
-                    throw new ExTeamNotExist();
+                Employee employee = Employee.searchEmployee(allEmployees, employeeName);
 
                 JoinReference joinReference = new JoinReference(team, employee);
                 allJoinReferences.add(joinReference);
-                System.out.println(allJoinReferences.size());
+                allLogging.add(new EmployeeJoinTeamLogging(team, employee));
                 return joinReference;
             }
         }
@@ -110,11 +123,11 @@ public class Company {
         throw new ExEmployeeNotFound();
     }
 
-    public Employee searchEmployee(String employeeName) throws ExEmployeeNotFound{
+    public Employee searchEmployee(String employeeName) throws ExEmployeeNotFound {
         return Employee.searchEmployee(allEmployees, employeeName);
     }
 
-    public Team searcTeam(String teamName) throws ExTeamNotExist{
+    public Team searcTeam(String teamName) throws ExTeamNotExist {
         return Team.searchTeam(allTeams, teamName);
     }
 
@@ -125,6 +138,7 @@ public class Company {
         if (removeJoinReference.getTeam().getTeamName().equals(teamName))
             throw new ExTeamSame();
 
+        changeEmplyeeJoinTeamLogging(removeJoinReference.getTeam(), removeJoinReference.getEmployee());
         removeJoinReference.removeJoin();
         allJoinReferences.remove(removeJoinReference);
         return joinTeam(employeeName, teamName);
@@ -132,7 +146,6 @@ public class Company {
 
     public void addJoinReference(JoinReference joinReference) {
         joinReference.join();
-        System.out.println(joinReference.getEmployee().getName() + " " + joinReference.getTeam().getTeamName());
         allJoinReferences.add(joinReference);
     }
 
@@ -146,13 +159,76 @@ public class Company {
     }
 
     public Project createProject(String projectId, int estManpower) throws ExProjectAlready {
-        if (Project.searchProject(allProjects, projectId))
+        if (Project.searchProjectAlready(allProjects, projectId))
             throw new ExProjectAlready();
 
         Project project = new Project(projectId, estManpower);
         allProjects.add(project);
         Collections.sort(allProjects);
         return project;
+    }
+
+    public void suggestTeam(String projectId) throws ExProjectNotExist {
+
+        Project resultProject = Project.searchProject(allProjects, projectId);
+        ArrayList<Project> tempProjectList = Project.suggestTeam(allProjects, allTeams, resultProject);
+        tempProjectList.forEach(project -> System.out.println(project.getTeam().getTeamName() + " (Work period: "
+                + project.getStartDay() + " to " + project.getEndDay() + ")"));
+    }
+
+    public Project takeProject(String teamName, String projectId, Day startDay) throws ExTeamNotExist,
+            ExProjectNotExist, ExProjectAlready, ExProjectNotAvailable, ExProjectDateStartEarlist {
+
+        Project project = Project.searchProject(allProjects, projectId);
+        if (project.getTeam() != null)
+            throw new ExProjectAlready("Project has already been assigned to a team.");
+        Team team = Team.searchTeam(allTeams, teamName);
+        Project tempProject = new Project(project);
+        tempProject.setTeam(team);
+        tempProject.setStartDay(startDay);
+        try {
+            Project.checkTeamAvailable(allProjects, team, tempProject);
+        } catch (ExProjectNotAvailable e) {
+            throw new ExProjectNotAvailable("The team is not available during the period (" + tempProject.getStartDay()
+                    + " to " + tempProject.getEndDay() + ").");
+        }
+        project.setTeam(team);
+        project.setStartDay(startDay);
+        return project;
+    }
+
+    public void showProjectWorkerDetails(String projectId) throws ExProjectNotExist {
+        Project project = Project.searchProject(allProjects, projectId);
+        ArrayList<Employee> employees = project.getProjectWorker(allLogging);
+        Collections.sort(employees);
+        System.out.println("Est manpower : " + project.getEstManpowerInt() + " man-days");
+        System.out.println("Team         : " + project.getTeam().getTeamName() + " (Leader is "
+                + project.getTeam().getHead().getName() + ")");
+        System.out.println("Work period  : " + project.getStartDay() + " to " + project.getEndDay());
+        System.out.println("\nMembers:");
+        int employeeIndex = 0;
+        for (Employee employee : employees) {
+            for (EmployeeJoinTeamLogging logging : allLogging) {
+                if (logging.getTeam() == project.getTeam() && logging.getEmployee() == employee) {
+                    Day printEndDay = (logging.getChangeDay() == null
+                            || logging.getChangeDay().getDateInt() > project.getEndDay().getDateInt())
+                                    ? project.getEndDay()
+                                    : logging.getChangeDay();
+                    Day printStartDay = null;
+                    if (logging.getLogDay().getDateInt() >= project.getStartDay().getDateInt()
+                            && logging.getLogDay().getDateInt() <= project.getEndDay().getDateInt())
+                        printStartDay = logging.getLogDay();
+                    else if (logging.getChangeDay() == null
+                            || logging.getChangeDay().getDateInt() >= project.getStartDay().getDateInt()) {
+                        printStartDay = project.getStartDay();
+                    }
+                    if (printStartDay == null)
+                        continue;
+                    System.out.println("  " + employee.getName() + "  (" + printStartDay + " to " + printEndDay + ")");
+                }
+            }
+
+        }
     }
 
     public void removeProject(Project project) {
