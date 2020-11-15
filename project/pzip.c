@@ -1,15 +1,3 @@
- /*
- * NOTE TO STUDENTS: Before you do anything else, please
- * provide your group information here.
- *
- * Group No.:  (Join a project group in Canvas)
- * First member's full name:
- * First member's email address:
- * Second member's full name:
- * Second member's email address:
- * Third member's full name:
- * Third member's email address:
- */
 
 // add/remove header files as you need
 #include <stdio.h>
@@ -21,11 +9,11 @@
 #include <sys/stat.h>
 #include <sys/sysinfo.h>
 #include <unistd.h>
-#include <math.h>
+#include <dirent.h>
 
 #define queue_capacity 10
 #define file_apart_size 10000000
-
+#define INT2POINTER(a) ((char*)(intptr_t)(a))
 
 int total_count_files;          // Number of files
 int total_pages = 0;            // Number of pages in All files
@@ -45,6 +33,12 @@ struct structured_file_data {
     int word_count;
 }*structured_data;
 
+//directory
+struct dir_inside_files{
+    char* name ;
+}*dir_files_name;
+
+char ** fileNames;
 
 // Queue
 int queue_size = 0;
@@ -73,7 +67,7 @@ struct apart_file_data dequeue(){
 
 
 void producer_apart_file(struct stat file_inf_buffer, char* mmap, int fileIndex){
-
+    
     int file_pages = (file_inf_buffer.st_size / file_apart_size);
     int page_size = 0;
     
@@ -83,14 +77,14 @@ void producer_apart_file(struct stat file_inf_buffer, char* mmap, int fileIndex)
     }else{
         page_size = file_apart_size;
     }
-
+    
     total_pages += file_pages;
     total_page_in_file[fileIndex] = file_pages;
     
-
+    
     for (int page = 0; page < file_pages; page++) {
         pthread_mutex_lock(&lock);
-
+        
         // Producer put the data to queue
         while(queue_size >= queue_capacity){
             pthread_cond_broadcast(&cond);
@@ -111,9 +105,11 @@ void producer_apart_file(struct stat file_inf_buffer, char* mmap, int fileIndex)
         }
         
        /* apart_file.page_size = (page != (file_pages - 1))? file_apart_size: page_size;*/
+        
         mmap += file_apart_size;
         pthread_mutex_lock(&lock);
         enqueue(apart_file);
+        
         pthread_mutex_unlock(&lock);
         pthread_cond_signal(&cond);
         
@@ -124,9 +120,10 @@ void producer_apart_file(struct stat file_inf_buffer, char* mmap, int fileIndex)
 
 // producer
 void* producer(void *argv){
-    char ** fileNames =  (char **)argv;
+    fileNames =  (char **)argv;
     for(int count = 0; count < total_count_files; count++){
         int file;
+        //printf("fileName: %s\n", fileNames[count]);
         if((file = open(fileNames[count], O_RDONLY)) < 0){
             printf("Error: File cannot open\n");
             exit(EXIT_FAILURE);
@@ -139,7 +136,144 @@ void* producer(void *argv){
             exit(EXIT_FAILURE);
         }
         if(file_inf_buffer.st_size <= 0){
+            producer_complete = 1;
             continue;
+        }
+        
+        if((S_ISDIR(file_inf_buffer.st_mode))){
+            dir_files_name = malloc(10 * sizeof(dir_files_name));
+            struct dirent *de;
+            DIR *dr = opendir(fileNames[count]);
+            int add_count = 0;
+            char path = '/';
+            int countFile = 0;
+            while((de = readdir(dr)) != NULL){
+                if(add_count > 1){
+                    char* pathString = de->d_name;
+                    
+                    int countFoundValue = 0;
+                    int countFoundIndex = 0;
+                    for(int i = 0; i < strlen(pathString); i++){
+
+                        if(pathString[i] == '-'){
+                            countFoundValue++;
+                        }
+                        if(countFoundValue == 2){
+                            countFoundIndex = i;
+                            break;
+                        }
+                    }
+                   
+                    char* tmpFileName = alloca(sizeof(char) * countFoundIndex - 2);
+                    for (int i = 0; i <= countFoundIndex; i++) {
+                        tmpFileName[i] = pathString[i];
+                    }
+                    
+                    
+                    int strlength = 1;
+                    if(countFile > 9)
+                        strlength = 2;
+                    char str[strlength];
+
+                    sprintf(str, "%d", countFile);
+                    
+                    
+                    long len = strlen(tmpFileName) + strlen(fileNames[count]) + 3 + strlength;
+                    char concated[len];
+                    memset(concated, '\0', len);
+                    strcat(concated, fileNames[count]);
+                    strcat(concated, &path);
+                    strcat(concated, tmpFileName);
+                    strcat(concated, str);
+                    //strcat(concated, '.in");
+                    char* cache_char = strcat(concated, ".in");
+                    
+                    
+                    
+                    dir_files_name[add_count-2].name = strdup(cache_char);
+                    countFile++;
+                }
+                
+                add_count++;
+            }
+            add_count-=2;
+            
+            for(int i = 0; i < add_count; i++){
+                printf("%s\n", dir_files_name[i].name);
+                int dirfile;
+                if((dirfile = open(dir_files_name[i].name, O_RDONLY)) < 0){
+                    printf("Error: File cannot open\n");
+                    exit(EXIT_FAILURE);
+                }
+                
+                struct stat dir_file_inf_buffer;
+                
+                if(fstat(dirfile, &dir_file_inf_buffer) != 0){
+                    printf("Error: Get the file status failed");
+                    close(dirfile);
+                    continue;
+                }
+                if(dir_file_inf_buffer.st_size <= 0){
+                    producer_complete = 1;
+                    continue;
+                }
+                
+                char* map = mmap(NULL, dir_file_inf_buffer.st_size, PROT_READ, MAP_SHARED, dirfile, 0);
+                
+                if(map == MAP_FAILED){
+                    printf("Error: File mapping failed");
+                    close(dirfile);
+                    exit(EXIT_FAILURE);
+                }
+                producer_apart_file(dir_file_inf_buffer, map, count);
+                close(dirfile);
+                
+            }
+            
+            continue;
+           /* char ** new_fileNames = malloc(sizeof(fileNames) + sizeof(dir_files_name));
+            
+            if(count != 0){
+                for(int i = 0; i < count; i++){
+                    new_fileNames[i] = strdup(fileNames[i]);
+                }
+            }
+            
+            for(int i = 0; i < add_count; i++){
+                new_fileNames[count + i] = dir_files_name[i].name;
+            }
+            
+            total_count_files += add_count - 1;
+            int old_fileNames_hole_index = count + 1;
+            if(total_count_files - add_count - count != 0){
+
+                for(int i = (count + add_count); i < total_count_files; i++ ){
+
+                    new_fileNames[i] = fileNames[old_fileNames_hole_index];
+                    old_fileNames_hole_index++;
+ 
+                }
+            }
+            
+            for (int i = 0 ; i < total_count_files; i++) {
+                printf("total_count: %d", total_count_files);
+                printf("index: %d, fileName: %s\n", i, new_fileNames[i]);
+            }
+           // fileNames = malloc(total_count_files);
+           // fileNames
+           // free(fileNames);
+            
+            fileNames = new_fileNames;
+            
+            printf("fileName Size: %lu\n", sizeof(fileNames));
+            for (int i = 0 ; i < total_count_files; i++) {
+                printf("total_count: %d", total_count_files);
+                printf("index: %d, fileName: %s\n", i, fileNames[i]);
+            }*/
+            //file = open(fileNames[count], O_RDONLY);
+            //fstat(file, &file_inf_buffer);
+            //printf("test-2:");
+            //continue;
         }
         
         char* map = mmap(NULL, file_inf_buffer.st_size, PROT_READ, MAP_SHARED, file, 0);
@@ -231,7 +365,7 @@ void printResult(){
     
     for(int i = 0;i < total_pages; i++){
         if(i<total_pages - 1){
-            if(structured_data[i].data[structured_data[i].word_count - 1]==structured_data[i + 1].data[0]){ //Compare i'th output's last character with the i+1th output's first character
+            if(structured_data[i].data[structured_data[i].word_count - 1]==structured_data[i + 1].data[0]){
                 
                 structured_data[i+1].count[0] += structured_data[i].count[structured_data[i].word_count-1];
                 
@@ -246,32 +380,7 @@ void printResult(){
         }
     }
 
-    /*for(int i = 1; i < total_pages; i++){
-        if(i-1 < total_pages-1){
-
-            if(structured_data[i - 1].data[structured_data[i - 1].word_count - 1] == structured_data[i].data[0]){
-                
-                structured_data[i].count[0] += structured_data[i - 1].count[structured_data[i - 1].word_count - 1];
-                structured_data[i - 1].word_count--;
-                
-            }
-        }
-        
-        for(int index = 0; index < structured_data[i - 1].word_count; index++){
-            int count = structured_data[i-1].count[index];
-            char character = structured_data[i-1].data[index];
-            fwrite(&count, sizeof(int), 1, stdout);
-            fwrite(&character, sizeof(char), 1, stdout);
-            
-        }
-    }*/
 }
-
-void clean_memory(){
-    free(total_page_in_file);
-    free(structured_data);
-}
-
 
 int main(int argc, char* argv[])
 {
@@ -285,6 +394,7 @@ int main(int argc, char* argv[])
     total_page_in_file = malloc(sizeof(int) * total_count_files);
     structured_data = malloc(sizeof(struct structured_file_data) * 512000*2);
     
+    
     pthread_t producerId, consumerId[total_threads];
     pthread_create(&producerId, NULL, producer, argv + 1);
     for(int index = 0; index < total_threads; index++){
@@ -295,8 +405,6 @@ int main(int argc, char* argv[])
     }
     pthread_join(producerId, NULL);
     printResult();
-    clean_memory();
     pthread_exit(NULL);
     return 0;
 }
-
