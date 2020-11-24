@@ -2,7 +2,7 @@
  * NOTE TO STUDENTS: Before you do anything else, please
  * provide your group information here.
  *
- * Group No.:  (Join a project group in Canvas)
+ * Group No.: 51 (Join a project group in Canvas)
  * First member's full name: Li Cheuk Yin
  * First member's email address: cyli79-c@my.cityu.edu.hk
  * Second member's full name: LI Hongzhou
