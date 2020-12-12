@@ -8,7 +8,7 @@
  *
  * @author jerrykwok
  */
-public class Main { /* Unique code: 752940388629254026665 */
+public class Main { 
 
 	public static void main(String [] args) {	
 
@@ -41,4 +41,4 @@ public class Main { /* Unique code: 752940388629254026665 */
 		s2.finishJob(); 	// Output [Tommy is free now]
 		s1.assignTask(f); 	// Output [Jason will do Job F]
 	}		
-} /* Unique code: 500433528675833875201 */
+} 

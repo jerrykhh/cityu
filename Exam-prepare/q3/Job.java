@@ -8,7 +8,7 @@
  *
  * @author jerrykwok
  */
-public class Job { /* Unique code: 677255658070126180072 */
+public class Job { 
     private String jobCode;
 
     public Job(String jc) {
@@ -18,4 +18,4 @@ public class Job { /* Unique code: 677255658070126180072 */
     public String toString() {
         return jobCode;
     }
-} /* Unique code: 494520918859251528792 */
+} 

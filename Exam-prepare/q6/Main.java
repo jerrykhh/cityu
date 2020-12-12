@@ -1,4 +1,4 @@
-public class Main { /* Unique code: 808572258112903734143 */
+public class Main {
 
 	public static void main(String[] args) {
 		Student s1 = new Student("Helena");
@@ -22,7 +22,7 @@ public class Main { /* Unique code: 808572258112903734143 */
 		p1.generateReport(); 	//Output [Accepted(CS==>Helena) Offered(CS==>Jason) ]
 		p2.generateReport(); 	//Output [Offered(CM==>Helena) Pending(CM==>Jason) ]
 	}
-} /* Unique code: 157888733207857340936 */
+} 
 
 
 

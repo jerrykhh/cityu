@@ -9,7 +9,7 @@
  * @author jerrykwok
  */
 
-public class Main { /* Unique code: 231725724089387705191 */
+public class Main { 
 
 	public static void main(String [] args)	{	
 
@@ -19,7 +19,7 @@ public class Main { /* Unique code: 231725724089387705191 */
 		Variable x = new Variable();
 		Variable y = new Variable();
 		
-		// (true and x) or (y and (not x)) /* Unique code: 642017778058416003518 */
+		// (true and x) or (y and (not x)) 
 		exp = new Or(
 				new And(new Constant(true), x),
 				new And(y, new Not(x)));
@@ -41,5 +41,5 @@ public class Main { /* Unique code: 231725724089387705191 */
 		result = exp.evaluate();
 		System.out.println(result); //Output [false]
 	}		
-} /* Unique code: 743788048998562278229 */
+}
 

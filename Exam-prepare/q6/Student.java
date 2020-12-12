@@ -2,7 +2,7 @@
 import java.util.ArrayList;
 
 
-public class Student { /* Unique code: 797560616844788047409 */
+public class Student { 
 
 	private String name;
 	private ArrayList<IApply> applications = new ArrayList<>();
@@ -32,4 +32,4 @@ public class Student { /* Unique code: 797560616844788047409 */
     }
 
 
-} /* Unique code: 698106986804866585115 */
+} 
