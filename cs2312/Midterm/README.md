@@ -1,15 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+# Midterm Question
 
-/**
- *
- * @author jerrykwok
- */
-
-Q1
+### Q1
 100 students are to take an online exam.  To detect cheating, the teacher sets 100 versions for each question.  Canvas then randomly assign one different version for each student to answer.
 Without knowing this arrangement, some students may share their answers to others.  This is considered as a serious act of academic dishonesty.  Canvas can detect that easily, and report to the Department.
 
@@ -36,32 +27,34 @@ If no case is detected, leave the output empty.
 Submission: Please include the code of Main, Question, Student, Canvas, and AnswerScript for this question.  If your code is incomplete (e.g. not doing all of part(a) and not covering the solution for part (b) or part(c)), you can still get partial marks.
 
 
-Q2
+### Q2
 MoneyShared is a class which models a sum of money that is to be shared evenly.
 
 Your task: Finish the given MoneyShared class and the main method which executes as shown in the given rundowns below (Underlined contents are input by the user).
-
-Rundown #1	Rundown #2	Rundown #3	Rundown #4	Rundown #5
+```
+Rundown #1				
 Initial ($): 1000
 Divided by: 5
 Amount becomes: $200
 
+Rundown #2
 Initial ($): nine
 Input mismatch!
 
-
+Rundown #3
 Initial ($): -50
 Negative number!
 
-
+Rundown #4
 Initial ($): 50
 Divided by: -10
 Negative number!
 
+Rundown #5
 Initial ($): 50
 Divided by: 6
 Not divisible!
-
+```
 Note: Exception handlers should be provided in main() which handles special cases as shown in Rundown #2-5. The exceptions are classified as:
 (i) input mismatch (see #2)
 (ii) negative number (see #3,4)
@@ -76,7 +69,7 @@ Submission: Please include the code of Main, MoneyShared, NegativeExcp, and NotD
 
 
 
-Q3
+### Q3
 A procedure involves one or more steps. 
 
 For each procedure, we create the first step, and then append new steps or other procedures as wanted.
@@ -90,7 +83,7 @@ Submission: Please include the code of Main and Step for this question.
 
 
 
-Q4
+### Q4
 A social network classifies members into different age groups:  Child, Teenager, Adult, Elderly
 
 Each member is given an integer score, initialized as 0.  Once a member makes a friend within the same age group, both members get 1 score.  If the friend is in another age group, then 10 scores are given to each of them.
@@ -110,4 +103,3 @@ Hints:
 
 
 Submission: Please include the code of all classes and interfaces for the completed program.
-
