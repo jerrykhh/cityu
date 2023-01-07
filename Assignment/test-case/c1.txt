@@ -1,0 +1,7 @@
+startNewDay|20-Feb-2020
+
+createProject|P001|5
+createProject|P002|10
+createProject|P903|30
+createProject|P004|40
+listProjects

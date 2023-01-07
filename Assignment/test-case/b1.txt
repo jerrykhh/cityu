@@ -1,0 +1,11 @@
+startNewDay|20-Feb-2020
+
+hire|Angel
+hire|Brian
+listEmployees
+
+setupTeam|X Troop|Angel 
+startNewDay|31-Mar-2020
+setupTeam|Team 007|Brian
+
+listTeams

@@ -1,0 +1,70 @@
+Please input the file pathname: e6.txt
+
+> undo
+Nothing to undo.
+
+> list
+Helena ($10000, 7 days)
+LazyGuy ($15000, 7 days)
+
+> redo
+Nothing to redo.
+
+> list
+Helena ($10000, 7 days)
+LazyGuy ($15000, 7 days)
+
+> exchangeSalaries Helena LazyGuy
+Done.
+
+> addSalary Helena 5000
+Done.
+
+> fire LazyGuy
+Done.
+
+> list
+Helena ($20000, 7 days)
+
+> undo
+
+> undo
+
+> undo
+
+> undo
+Nothing to undo.
+
+> list
+Helena ($10000, 7 days)
+LazyGuy ($15000, 7 days)
+
+> redo
+
+> redo
+
+> redo
+
+> redo
+Nothing to redo.
+
+> list
+Helena ($20000, 7 days)
+
+> undo
+
+> undo
+
+> changeAnnualLeaves Helena 365
+Done.
+
+> list
+Helena ($15000, 365 days)
+LazyGuy ($10000, 7 days)
+
+> redo
+Nothing to redo.
+
+> list
+Helena ($15000, 365 days)
+LazyGuy ($10000, 7 days)

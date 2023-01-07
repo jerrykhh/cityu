@@ -1,0 +1,35 @@
+startNewDay|01-Jan-2020
+
+hire|Bob
+hire|John
+hire|Grace
+
+setupTeam|X Troop|Bob 
+setupTeam|Spider Gang|John
+
+startNewDay|01-Feb-2020
+setupTeam|Team 007|Grace
+
+listTeams
+
+undo
+undo
+undo
+undo
+undo
+undo
+undo
+undo
+
+listTeams
+
+redo
+redo
+redo
+redo
+redo
+listTeams
+
+setupTeam|Team 007|Grace
+listTeams
+redo

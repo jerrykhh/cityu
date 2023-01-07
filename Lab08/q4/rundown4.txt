@@ -1,0 +1,57 @@
+Please input the file pathname: e4.txt
+
+> list
+Helena ($10000, 7 days)
+Jason ($20000, 21 days)
+Kit ($30000, 21 days)
+LazyGuy ($45000, 30 days)
+
+> exchangeSalaries Helena LazyGuy
+Done.
+
+> list
+Helena ($45000, 7 days)
+Jason ($20000, 21 days)
+Kit ($30000, 21 days)
+LazyGuy ($10000, 30 days)
+
+> exchangeSalaries Helena Jason
+Done.
+
+> list
+Helena ($20000, 7 days)
+Jason ($45000, 21 days)
+Kit ($30000, 21 days)
+LazyGuy ($10000, 30 days)
+
+> undo
+
+> list
+Helena ($45000, 7 days)
+Jason ($20000, 21 days)
+Kit ($30000, 21 days)
+LazyGuy ($10000, 30 days)
+
+> undo
+
+> list
+Helena ($10000, 7 days)
+Jason ($20000, 21 days)
+Kit ($30000, 21 days)
+LazyGuy ($45000, 30 days)
+
+> redo
+
+> list
+Helena ($45000, 7 days)
+Jason ($20000, 21 days)
+Kit ($30000, 21 days)
+LazyGuy ($10000, 30 days)
+
+> redo
+
+> list
+Helena ($20000, 7 days)
+Jason ($45000, 21 days)
+Kit ($30000, 21 days)
+LazyGuy ($10000, 30 days)

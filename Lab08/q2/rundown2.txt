@@ -1,0 +1,45 @@
+Please input the file pathname: e2.txt
+
+> list
+Helena ($10000, 7 days)
+Jason ($20000, 21 days)
+Kit ($30000, 21 days)
+
+> addSalary Helena 5000
+Done.
+
+> addSalary Jason 2000
+Done.
+
+> list
+Helena ($15000, 7 days)
+Jason ($22000, 21 days)
+Kit ($30000, 21 days)
+
+> undo
+
+> list
+Helena ($15000, 7 days)
+Jason ($20000, 21 days)
+Kit ($30000, 21 days)
+
+> undo
+
+> list
+Helena ($10000, 7 days)
+Jason ($20000, 21 days)
+Kit ($30000, 21 days)
+
+> redo
+
+> list
+Helena ($15000, 7 days)
+Jason ($20000, 21 days)
+Kit ($30000, 21 days)
+
+> redo
+
+> list
+Helena ($15000, 7 days)
+Jason ($22000, 21 days)
+Kit ($30000, 21 days)

@@ -1,0 +1,8 @@
+startNewDay|20-Feb-2020
+
+hire|Angel
+hire|Angel
+hire
+hire|Bob
+
+listEmployees

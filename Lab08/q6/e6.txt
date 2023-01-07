@@ -1,0 +1,34 @@
+2
+Helena 10000 7
+LazyGuy 15000 7
+
+undo
+list
+
+redo
+list
+
+exchangeSalaries Helena LazyGuy
+addSalary Helena 5000
+fire LazyGuy
+list
+
+undo
+undo
+undo
+undo
+list
+
+redo
+redo
+redo
+redo
+list
+
+undo
+undo
+changeAnnualLeaves Helena 365
+list
+
+redo
+list

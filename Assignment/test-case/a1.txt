@@ -1,0 +1,9 @@
+startNewDay|20-Feb-2020
+
+hire|Cathy
+listEmployees
+
+hire|Angel
+hire|Bob
+
+listEmployees
