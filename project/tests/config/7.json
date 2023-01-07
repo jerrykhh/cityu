@@ -1,0 +1,9 @@
+{
+    "binary": 1,
+    "filename": 7,
+    "filesize": [[10, 20, 30, 40, 10, 20, 30, 40, 10, 20, 30, 40]],
+    "timeout": 2,
+    "seed": 10000169,
+    "description": "directory test, a directory that contains twelve small files of ${directory} (${timeout} sec timeout)",
+    "preparation": "cat ${filename} > /dev/null"
+}
