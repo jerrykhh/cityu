@@ -24,7 +24,9 @@ Find the negation of the quantification:
 | F | F | F | F | T |
 
 ### Q2
+
 (1) True, statement Q(-1) by setting the x = -1, -1 + 1 &gt; 2 (-1) is True
+
 (2) False, assume the statement to Q(1) by setting x = 1, 1 + 1 is not &gt; 2(1)
 
 ### Q3

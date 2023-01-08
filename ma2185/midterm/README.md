@@ -9,15 +9,32 @@ Determine the truth value of following statements if the domainconsists of all r
 ## Question 2
 Show the validity of
 $p\to q$
+
 $r\to s$
+
 $p\vee r$
-$\frac{}{\therefore  q\vee s}$
+
+------
+$ \therefore  q\vee s$
+
 
 ## Question 3
-Show that $\neg p \to (q \to r) $ and $q \to ( p \vee r)$ are logically equivalent.
+Show that 
+```math
+\neg p \to (q \to r)
+```
+and
+```math
+q \to ( p \vee r)
+```
+are logically equivalent.
 
 ## Question 4
-Let $A = \begin{Bmatrix} 1,2,3,4\end{Bmatrix}$. $R$ is a relation on A with 
+Let 
+```math
+A = \begin{Bmatrix} 1,2,3,4\end{Bmatrix}
+```
+$R$ is a relation on A with 
 ```math
 R=\begin{Bmatrix}
  (1,1),(1,3),(3,1),(2,2),(2,4),(3,3),(3,4),(4,4)
@@ -27,13 +44,24 @@ R=\begin{Bmatrix}
 2. Determine and explain whether $R$ is reflexive, symmetric, antisymmetric, or transitive.
 
 ## Question 5
-Let $A$ be the set $\begin{Bmatrix}a,d\end{Bmatrix}$.
+Let $A$ be the set 
+```math
+\begin{Bmatrix}
+a,d
+\end{Bmatrix}
+```
 1. Find the power set $P(A)$ of $A$
 2. Find $A\times A\times A$
 3. Determine whether the function $f : B \to \bar{B}$ is a bijection,where the domain is $P(A)$
 
 ## Question 6
-Show that the relation $\left\{ \right. (a,b) | a = \pm b\pmod{7}\left. \right \}$ is an equivalencerelation on the set of integers.
+Show that the relation 
+```math
+R=\begin{Bmatrix}
+(a,b) | a = \pm b\pmod{7}
+\end{Bmatrix}
+```
+is an equivalencerelation on the set of integers.
 
 ## Question 7
 The logical operator NAND, written as $|$ is defined by
