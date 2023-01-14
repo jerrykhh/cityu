@@ -8,6 +8,7 @@ BSc in Computer Science
 | [CS2312](./cs2312/) | Problem Solving and Programming (Java OOP) |
 | [CS3103](./cs3103/) | Operating Systems |
 | [CS3342](./cs3342/) | Software Design |
+| [CS3343](./cs3343/) | Software Engineering Practice |
 | [CS3481](./cs3481/) | Fundamentals of Data Science |
 | [CS3483](./cs3483/) | Multimodal Interface Design |
 | [CS4335](./cs4335/) | Design and Analysis of Algorithms |
