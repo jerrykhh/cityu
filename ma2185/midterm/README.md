@@ -15,7 +15,7 @@ $r\to s$
 $p\vee r$
 
 ------
-$ \therefore  q\vee s$
+$\therefore q\vee s$
 
 
 ## Question 3

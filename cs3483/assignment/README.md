@@ -17,11 +17,7 @@ When the ‘v’ key is pressed and released, the interface should enter the vie
 When the ‘m’ key is pressed and released, the interface should enter the modify image mode. In this mode, the original image should be displayed. When your face is moving in the camera view, a small circle should be drawn at the position indicator on the image. The circle should be filled with the pixel color at the location of the position indicator. When the position indicator moves away, the small circle should be retained. You may use random values for the diameter of the circle and the degree of opacity of the color in the circle.
 
 5. Finding the faces
-When the ‘f’ key is pressed and released, the interface should enter the find faces mode. In
-this mode, the original image should be displayed. When your face is moving across the
-camera view and the corresponding position indicator is close to a face on the image, the
-face on the image should be displayed at a slightly larger size at the same position. When
-the position indicator moves away, the original size of the face should be restored.
+When the ‘f’ key is pressed and released, the interface should enter the find faces mode. In this mode, the original image should be displayed. When your face is moving across the camera view and the corresponding position indicator is close to a face on the image, the face on the image should be displayed at a slightly larger size at the same position. When the position indicator moves away, the original size of the face should be restored.
 
 6. Exiting the view image/modify image/find faces mode
 When the ‘e’ key is pressed and released, the interface should exit from the view image/modify image/find faces mode, and the original image should be re-displayed.

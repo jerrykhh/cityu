@@ -32,8 +32,13 @@ Find the negation of the quantification:
 ### Q3
 
 $\equiv \exists x \neg(C(x)\rightarrow (D(x)\wedge E(x)))$
+
 $\equiv \exists x \neg(\neg C(x) \vee (D(x)\wedge E(x)))$
+
 $\equiv \exists x (\neg \neg C(x))\wedge  (\neg (D(x)\wedge E(x)))$
+
 $\equiv \exists x (C(x)\wedge  (\neg (D(x)\wedge E(x))))$
+
 $\equiv \exists x (C(x)\wedge  (\neg D(x)\vee \neg E(x)))$
+
 $\equiv \exists x (C(x)\wedge  (D(x)\rightarrow \neg E(x)))$

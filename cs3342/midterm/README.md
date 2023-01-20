@@ -5,77 +5,113 @@
 1. System maintenance is necessary because:
 
     a. Humans never get it right the first time.
+
     b. The deployment platform may change over time.
+
     c. The user's needs may change over time.
+
     d. All of the above.
+    
     e. None of the above.
 
 2. The work products produced during requirement elicitation will vary depending on the
 
     a. size of the budget.
+
     b. software process being used.
+
     c. size of the product being built.
+
     d. stakeholder’s needs.
 
 3. The Waterfall Model is inadequate because:
 
     a. Water is a continuous medium whereas code comes in discrete chunks (i.e. functions, objects, etc.), so all water-based analogies for software development are doomed to failure.
+
     b. it incorrectly suggests that the sequence of development is a random process of rising and falling from stage to stage, with backwards progress just as likely as forwards.
+
     c. it incorrectly suggests that the sequence of software development is susceptible to uncontrollable external and internal forces (analogous to gravity and surface tension).
+
     d. it incorrectly suggests that the sequence of development is a process unpredictable in the details, but predictable in its overall effect, like a waterfall.
+
     e. it incorrectly suggests that the sequence of development is a progression from stage to stage, with no backwards steps.
 
 4. An important aspect of prototyping is that
 
     a. it is comprehensive.
+
     b. it is built for change.
+
     c. aspects such as error-checking capabilities, I/O and complex calculations are handled.
+
     d. it evolves into the final product.
+
     e. All of the above.
 
 5. Software deteriorates rather than wears out because
 
     a. Software spare parts become harder to order.
+    
     b. Software suffers from exposure to hostile environments.
+    
     c. Defects are more likely to arise after software has been used often.
+    
     d. Multiple change requests introduce errors in component interactions.
 
 6. The Waterfall model of software development
 
     a. Incorporates risk management.
+    
     b. Involves developing a series of prototypes.
+    
     c. Suggests that one should perform the steps in a sequential manner without iterating.
+    
     d. Is considered the best way to develop software.
+    
     e. Does not allow one to correct any mistakes.
 
 7. Which of the following is not captured by software requirements?
 
     a. Resource estimates.
+    
     b. Interface with other systems.
+    
     c. System constraints.
+    
     d. System services.
 
 8. Methods of requirements gathering include
 
     a. interviews using structured techniques and close-ended questions.
+    
     b. interviews using structured techniques and open-ended questions.
+    
     c. questionnaires.
+    
     d. an analysis of forms used by clients.
+    
     e. All of the above.
 
 9. The system specification describes the
 
     a. function, performance and constraints of a software system.
+    
     b. implementation of each allocated system.
+    
     c. element of software architecture.
+    
     d. time required for system simulation.
 
 10. Software Engineering is best described as:
 
     a. the practice of designing, building and maintaining ad-hoc software without the use of formal methods.
+    
     b. the practice of designing, building, and maintaining off-the-shelf software from prefabricated parts.
+    
     c. the practice of designing, building and maintaining fast and flexible software specifically for Engineering applications.
+    
     d. the practice of designing, building and maintaining reliable and cost-effective software using standard techniques.
+    
     e. the practice of designing, building and maintaining flashy, cheap and buggy software engineered to generate large initially sales and an on-going market for updates.
 
 ## Question 2 (30 Marks)

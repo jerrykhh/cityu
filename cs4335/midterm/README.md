@@ -50,7 +50,7 @@ Initial call FindMax(A, 0, n)
 
 ## Question 5 (15 points)
 
-Given an array of n ≥ 2 distinct integers (i.e., no two integers are the same) sorted in ascending order, say [x(1),...,x(n)], we want to find the absolute minimum difference between the x(i) and i. For example, for x = [-10, 9, 10, 12, 13, 16] , the minimum difference $ d = | x(2) - 2 | = | 9 - 2 | = 7 $
+Given an array of n ≥ 2 distinct integers (i.e., no two integers are the same) sorted in ascending order, say [x(1),...,x(n)], we want to find the absolute minimum difference between the x(i) and i. For example, for x = [-10, 9, 10, 12, 13, 16] , the minimum difference $d = | x(2) - 2 | = | 9 - 2 | = 7$
 
 (a) (5 points) Use a linear time algorithm to solve the problem.
 
@@ -376,12 +376,12 @@ Sum of inversions : 10
 (b) The recurrence expression for T(n) is : T(n)=T(n−1)+1. Hence, T(n)~𝑂(𝑛).
 
 
-(c)  $ T(n) = (T(1) + (n+2)(n-1))/2 $ , hence $ T(n) $ ~ $ 𝑂(𝑛^2) $ .
+(c) $T(n) = (T(1) + (n+2)(n-1))/2 $, hence $T(n) $~ $𝑂(𝑛^2) $.
 
 
-(d) $ T(n) = T(n/3^k) + k $. Assume, $ n/(3^k) $, we have $ k= \log_{3}(n) $.
+(d) $T(n) = T(n/3^k) + k$. Assume, $n/(3^k)$, we have $k= \log_{3}(n)$.
 
-In this way, $ T(n) = 1 + \log_{3}n = 1 + \log n / log_{2}3 $ . Hence, $ T(n) $ ~ $ O(log n)$ .
+In this way, $T(n) = 1 + \log_{3}n = 1 + \log n / log_{2}3 $. Hence, $T(n) $~ $O(log n) $.
 
 ### Q5
 (a) 
@@ -408,18 +408,18 @@ call minDiff(1, n)
 ```
 
 (c)
-$ T(n) = T(n/2) + 1 $
+ $T(n) = T(n/2) + 1$
 
-$ T(n/2) = T(n/2^2)+1 $
+ $T(n/2) = T(n/2^2)+1$
 
 ...
 
-$ T(n/2^{k-1}) = T(n/2^{k})+1 $
+ $T(n/2^{k-1}) = T(n/2^{k})+1$
 
-Then, $ T(n) = T(n/2^{k}) + k $
-Assume $ n/2^k = 1 $ , and we have $ k = log_{2}n $
+Then, $T(n) = T(n/2^{k}) + k$
+Assume $n/2^k = 1 $, and we have $k = log_{2}n$
 
-$ T(n)=1+ log_{2}n $ , and $ T(n) = O(log_{n}) $
+ $T(n)=1+ log_{2}n $, and $T(n) = O(log_{n})$
 
 ### Q6
 (a)
@@ -432,7 +432,7 @@ For i=1 to n.
     // the running time of Phase 2 is O (n), since the intervals from Phase 1 are sorted according to finish time, and no sorting is necessary.  
 ```
 
-(b) $ O(n^2) $
+(b) $O(n^2)$
 
 (c) (1) Let A be a maximal set of non-overlapped squared interval. If A contains an interval starting at i,  replace this interval by the shortest squared interval starting at i will not  change the optimality of A. (2) For each i,  A can contain at most one interval starting at i. 
 (1)+(2) indicate that this problem is equivalent to the interval scheduling problem and the algorithm is correct. 

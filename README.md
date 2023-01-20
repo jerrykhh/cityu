@@ -5,8 +5,8 @@ BSc in Computer Science
 
 | Course Code | Course Name |
 | -- | -- |
-| [CS2402](./cs2402/) | Introduction to Computational Probability Modeling |
 | [CS2312](./cs2312/) | Problem Solving and Programming (Java OOP) |
+| [CS2402](./cs2402/) | Introduction to Computational Probability Modeling |
 | [CS3103](./cs3103/) | Operating Systems |
 | [CS3334](./cs3334/) | Data Structures |
 | [CS3342](./cs3342/) | Software Design |

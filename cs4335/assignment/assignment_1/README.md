@@ -16,7 +16,7 @@ Given a tree of n nodes, each node in the tree has a depth. The root has depth 0
 ```math
 f_1d_1 + f_2d_2 + ... + f_nd_n
 ``` 
-where $ d_i $ is the node depth for word $ i $
+where $d_i$is the node depth for word $i$
 Design an algorithm to solve the problem (5 points). Prove that your algorithm is correct. (10 points)
 
 E.g. Given a tree with six nodes (figure 1) and we want store 6 words, **I am a primary school student**, with counts shown as below,
@@ -133,12 +133,12 @@ Edge (1, 2) can be replaced by (1, 5), edge (2, 5) can be replaced by (5, 6), an
 Sort the words with descending order of count, Iterate the given tree with BFS and fill the node with ordered words one by one.
 
 Proof:
-Words count with descending order: $ c_0  c_1 ... c_n $ , for each $ 0 <= i < n, c_i <= c_{i+1} $
+Words count with descending order:$c_0  c_1 ... c_n$, for each$0 <= i < n, c_i <= c_{i+1}$
 
 Distance as the algorithm describes,
-$ D_{opt} = c_0d_0 + c_1d_1 + ... + c_nd_n $ , where $ d_i $ is the depth of $i$ th node in the tree, $ d_0 = 0 $ for the root node.
+$D_{opt}=c_0d_0+c_1d_1+...+ c_nd_n$, where $d_i$ is the depth of $i$th node in the tree, $d_0=0$ for the root node.
 
-If wee change the insertion order to any two words, $i$ and $ i + 1$ , the distance is,
+If wee change the insertion order to any two words,$i$ and $i+1$, the distance is,
 ```math
 D_1 = c_0d_0 ... + c_{i+1}d_i + c_id_{i+1} + ... + c_nd_n
 ```
@@ -147,4 +147,4 @@ We can get,
 ```math
 D_{opt} - D_1 = (c_0d_0 + c_1d_1 + ... c_nd_n) - (c_0d_0 ... + c_{i+1}d_i + c_id_{i+1} + ... + c_nd_n) <=0
 ```
-For other insertion situations, we can know $ D_{opt} - D_{other} <= 0 $ always holds
+For other insertion situations, we can know $D_{opt}-D_{other}<=0$ always holds

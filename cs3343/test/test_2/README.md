@@ -95,10 +95,14 @@ Based on your test input values, convert to JUnit Test cases and copy/paste your
 
 #### Observe the above program structure, based on the structure, answer the following questions: 
 (a)	To perform unit test on the component S, do you need to create test stubs? Explain your answer. (4 Marks)
-(b)	Provide the test sequence when using: **Big Bang** Approach (5 Marks): 
-(c)	Provide the test sequence when using: **Bottom-Up** Approach (5 Marks):
-(d)	Provide the test sequence when using: **Top-Down** Approach (5 Marks): 
-(e)	Provide the test sequence when using: **Modified Top-Down** Approach (5 Marks):
+
+(b)	Provide the test sequence when using: **Big Bang** Approach (5 Marks)
+
+(c)	Provide the test sequence when using: **Bottom-Up** Approach (5 Marks)
+
+(d)	Provide the test sequence when using: **Top-Down** Approach (5 Marks)
+
+(e)	Provide the test sequence when using: **Modified Top-Down** Approach (5 Marks)
 
 Hints:
 - You may need to conduct multiple rounds of integration testing to answer Q2(b), (c), (d), and (e)
